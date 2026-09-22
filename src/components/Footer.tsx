@@ -2,20 +2,16 @@ import React from 'react';
 import { profileData } from '../data/profileData';
 import { SocialLinks } from './SocialLinks';
 import { ArrowUp, Heart, Sparkles, ShieldCheck } from 'lucide-react';
+import { navigateToRoute, scrollToSectionById } from '../utils/router';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToRoute('/home', true);
   };
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, sectionId: string) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    navigateToRoute(path, true);
   };
 
   return (
@@ -56,8 +52,8 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <a
-                  href="#home"
-                  onClick={(e) => scrollToSection(e, 'home')}
+                  href="/home"
+                  onClick={(e) => handleLinkClick(e, '/home', 'home')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5"
                 >
                   Home
@@ -65,8 +61,8 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#about"
-                  onClick={(e) => scrollToSection(e, 'about')}
+                  href="/about"
+                  onClick={(e) => handleLinkClick(e, '/about', 'about')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5"
                 >
                   About Me
@@ -74,8 +70,8 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#skills"
-                  onClick={(e) => scrollToSection(e, 'skills')}
+                  href="/skills"
+                  onClick={(e) => handleLinkClick(e, '/skills', 'skills')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5"
                 >
                   My Skills
@@ -83,8 +79,8 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#portfolio"
-                  onClick={(e) => scrollToSection(e, 'portfolio')}
+                  href="/portfolio"
+                  onClick={(e) => handleLinkClick(e, '/portfolio', 'portfolio')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5"
                 >
                   My Portfolio
@@ -92,8 +88,8 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#medha-exam"
-                  onClick={(e) => scrollToSection(e, 'medha-exam')}
+                  href="/medha-exam"
+                  onClick={(e) => handleLinkClick(e, '/medha-exam', 'medha-exam')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5 flex items-center gap-1.5"
                 >
                   <span>Medha Exam</span>
@@ -102,8 +98,8 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
-                  onClick={(e) => scrollToSection(e, 'contact')}
+                  href="/contact"
+                  onClick={(e) => handleLinkClick(e, '/contact', 'contact')}
                   className="text-slate-400 hover:text-white transition-colors block py-0.5"
                 >
                   Contact Me

@@ -3,6 +3,7 @@ import { profileData } from '../data/profileData';
 import { Sparkles, CheckCircle2, ArrowRight, BookOpen, Layers, Lightbulb, Compass, Award } from 'lucide-react';
 import { motion, useInView } from 'motion/react';
 import { AnimatedCounter } from './AnimatedCounter';
+import { navigateToRoute } from '../utils/router';
 
 interface AboutProps {
   onOpenResume?: () => void;
@@ -13,12 +14,7 @@ export const About: React.FC<AboutProps> = ({ onOpenResume }) => {
   const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
 
   const scrollTo = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    navigateToRoute(`/${targetId}`, true);
   };
 
   const highlights = [

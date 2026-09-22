@@ -3,6 +3,7 @@ import { profileData } from '../data/profileData';
 import { SocialLinks } from './SocialLinks';
 import { ArrowRight, Mail, Sparkles, Layers, ShieldCheck, Download } from 'lucide-react';
 import { motion } from 'motion/react';
+import { navigateToRoute } from '../utils/router';
 
 interface HeroProps {
   onOpenResume?: () => void;
@@ -10,12 +11,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   const scrollTo = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    navigateToRoute(`/${targetId}`, true);
   };
 
   return (
